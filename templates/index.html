@@ -705,89 +705,47 @@
         </div>
 
         <div class="overflow-x-auto">
-          <div
-            class="max-h-[480px] overflow-y-auto rounded-lg border border-slate-100"
-          >
+          {%if attendance%}
+          <div id="holder_all" class="flex flex-col">
             <table
               id="attendance"
-              class="w-full text-left text-sm min-w-[1500px] flex"
+              class="w-full text-left text-black text-sm min-w-[1500px] table-auto"
             >
               <thead
-                class="text-slate-400 text-xs sticky top-0 bg-white z-10 shadow-[0_1px_0_0_#F1F5F9]"
+                class="text-black text-sm sticky top-0 bg-white z-10 shadow-[0_1px_0_0_#F1F5F9]"
               >
-                <tr id="tableHeadRow">
-                  <!-- <th
-                    data-key="id"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Member ID <span class="sort-ind text-slate-300"></span>
-                  </th> -->
-                  <!-- <th class="py-3 px-3 font-medium">Photo</th> -->
+                <tr>
                   <th
-                    data-key="fullName"
                     class="th-sort py-3 w-[300px] px-3 font-medium cursor-pointer select-none"
                   >
                     Full Name <span class="sort-ind text-slate-300"></span>
                   </th>
                   <th
-                    data-key="phone"
+                    class="th-sort py-3 w-[80px] px-3 font-medium cursor-pointer select-none"
+                  >
+                    Gender <span class="sort-ind text-slate-300"></span>
+                  </th>
+                  <th
+                    class="th-sort py-3 w-[80px] px-3 font-medium cursor-pointer select-none"
+                  >
+                    DOB <span class="sort-ind text-slate-300"></span>
+                  </th>
+                  <th
                     class="th-sort py-3 px-3 w-[120px] font-medium cursor-pointer select-none"
                   >
-                    Phone Number <span class="sort-ind text-slate-300"></span>
+                    Phone <span class="sort-ind text-slate-300"></span>
                   </th>
                   <th
-                    data-key="email"
                     class="th-sort py-3 px-3 font-medium w-[200px] cursor-pointer select-none"
                   >
-                    Email Address <span class="sort-ind text-slate-300"></span>
+                    Email <span class="sort-ind text-slate-300"></span>
                   </th>
                   <th
-                    data-key="address"
                     class="th-sort py-3 px-3 font-medium w-[300px] cursor-pointer select-none"
                   >
-                    Residential Address
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <!-- <th
-                    data-key="membershipStatus"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Membership Status
-                    <span class="sort-ind text-slate-300"></span>
+                    Address <span class="sort-ind text-slate-300"></span>
                   </th>
                   <th
-                    data-key="ministry"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Ministry <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="serviceDate"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Service Date <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="attendanceStatus"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Attendance Status
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="checkIn"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Check-in <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="checkOut"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Check-out <span class="sort-ind text-slate-300"></span>
-                  </th>-->
-                  <th
-                    data-key="duration"
                     class="th-sort py-3 w-[180px] px-3 font-medium cursor-pointer select-none"
                   >
                     Time-in <span class="sort-ind text-slate-300"></span>
@@ -795,146 +753,75 @@
                   <th class="py-3 px-3 font-medium">Actions</th>
                 </tr>
               </thead>
+
               <tbody
                 class="divide-y divide-slate-100 text-slate-700"
                 id="recordsBody"
-              ></tbody>
-            </table>
-
-            {%for i in attendance%}
-            <table
-              id="attendance"
-              class="w-full text-left text-black text-sm min-w-[1500px] flex"
-            >
-              <thead
-                class="text-black text-sm sticky top-0 bg-white z-10 shadow-[0_1px_0_0_#F1F5F9]"
               >
-                <tr id="tableHeadRow">
-                  <!-- <th
-                    data-key="id"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    <span class="sort-ind text-slate-300">{{i._id}}</span>
-                  </th> -->
-
-                  <th
-                    data-key="fullName"
-                    class="th-sort py-3 w-[300px] px-3 font-medium cursor-pointer select-none"
-                  >
-                    {{i.name}} <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="phone"
-                    class="th-sort py-3 px-3 w-[120px] font-medium cursor-pointer select-none"
-                  >
-                    {{i.phone}} <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="email"
-                    class="th-sort py-3 px-3 font-medium w-[200px] cursor-pointer select-none"
-                  >
-                    {{i.email}} <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="address"
-                    class="th-sort py-3 px-3 font-medium w-[300px] cursor-pointer select-none"
-                  >
-                    {{i.address}}
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-
-                  <!--                   
-                  <th
-                    data-key="membershipStatus"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Membership Status
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="ministry"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Ministry <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="serviceDate"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Service Date <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="attendanceStatus"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Attendance Status
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="checkIn"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Check-in <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th
-                    data-key="checkOut"
-                    class="th-sort py-3 px-3 font-medium cursor-pointer select-none"
-                  >
-                    Check-out <span class="sort-ind text-slate-300"></span>
-                  </th>-->
-                  <th
-                    data-key="duration"
-                    class="th-sort py-3 w-[180px] px-3 font-medium cursor-pointer select-none"
-                  >
-                    {{i.createdAt.strftime('%d/%m/%Y %I:%M%p')}}
-                    <span class="sort-ind text-slate-300"></span>
-                  </th>
-                  <th class="py-3 px-3 font-medium">Actions</th>
+                {% for i in attendance %}
+                <tr class="odd:bg-slate-50 rounded-md">
+                  <td class="py-3 px-3">{{ i.name }}</td>
+                  <td class="py-3 px-3">{{ i.gender }}</td>
+                  <td class="py-3 px-3">{{ i.dob }}</td>
+                  <td class="py-3 px-3">{{ i.phone }}</td>
+                  <td class="py-3 px-3">{{ i.email }}</td>
+                  <td class="py-3 px-3">{{ i.address }}</td>
+                  <td class="py-3 px-3">
+                    {% if i.createdAt %} {{ i.createdAt.strftime('%d/%m/%Y
+                    %I:%M%p') }} {% else %} N/A {% endif %}
+                  </td>
+                  <td class="py-3 px-3">
+                    <button class="text-blue-600 hover:text-blue-800">
+                      Edit
+                    </button>
+                    <button class="text-red-600 hover:text-red-800 ml-2">
+                      Delete
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody
-                class="divide-y divide-slate-100 text-slate-700"
-                id="recordsBody"
-              ></tbody>
+                {% endfor %}
+              </tbody>
             </table>
-            {%endfor%}
-
-            <!-- EMPTY STATE -->
-            <div
-              id="emptyState"
-              class="hidden flex-col items-center justify-center text-center py-16 px-6"
-            >
-              <div
-                class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center mb-4 mx-auto"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#94A3B8"
-                  stroke-width="2"
-                >
-                  <circle cx="9" cy="7" r="3" />
-                  <path d="M2 21v-1a6 6 0 0 1 12 0v1" />
-                  <circle cx="17" cy="8" r="2.5" />
-                  <path d="M15 21v-1a4 4 0 0 1 7-2.6" />
-                </svg>
-              </div>
-              <p class="text-slate-500 text-sm font-medium mb-1">
-                No members have been registered yet.
-              </p>
-              <p class="text-slate-400 text-xs mb-5">
-                Click "Register Member" to add your first church member.
-              </p>
-              <button
-                onclick="openAddModal()"
-                class="bg-[#3457FF] text-white px-5 py-2.5 rounded-xl font-medium text-sm"
-              >
-                + Register Member
-              </button>
-            </div>
           </div>
+
+          {%else%}
+          <div
+            id="emptyState"
+            class="flex flex-col items-center justify-center text-center py-16 px-6"
+          >
+            <div
+              class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center mb-4 mx-auto"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#94A3B8"
+                stroke-width="2"
+              >
+                <circle cx="9" cy="7" r="3" />
+                <path d="M2 21v-1a6 6 0 0 1 12 0v1" />
+                <circle cx="17" cy="8" r="2.5" />
+                <path d="M15 21v-1a4 4 0 0 1 7-2.6" />
+              </svg>
+            </div>
+            <p class="text-slate-500 text-sm font-medium mb-1">
+              No members have been registered yet.
+            </p>
+            <p class="text-slate-400 text-xs mb-5">
+              Click "Register Member" to add your first church member.
+            </p>
+            <button
+              onclick="openAddModal()"
+              class="bg-[#3457FF] text-white px-5 py-2.5 rounded-xl font-medium text-sm"
+            >
+              + Register Member
+            </button>
+          </div>
+          {%endif%}
+
+          <!-- EMPTY STATE -->
         </div>
 
         <!-- PAGINATION -->
@@ -1142,10 +1029,117 @@
     </div>
 
     <script>
+      function add_member() {
+        const name = document.getElementById("fullName");
+        const dob = document.getElementById("dob");
+        const phone = document.getElementById("phone");
+        const email = document.getElementById("email");
+        const address = document.getElementById("address");
+        const gender = document.getElementById("gender");
+
+        const data = {
+          name: name.value,
+          dob: dob.value,
+          phone: phone.value,
+          email: email.value,
+          address: address.value,
+          gender: gender.value,
+        };
+
+        fetch("/add_member", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then(async (res) => {
+            const payload = await res.json();
+            if (!res.ok || !payload.success) {
+              throw new Error(payload.message || "Unable to save member");
+            }
+            return payload;
+          })
+          .then((payload) => {
+            const tbody = document.getElementById("recordsBody");
+            const members = payload.data || [];
+
+            members.forEach((member) => {
+              const row = document.createElement("tr");
+              row.className = "odd:bg-slate-50 rounded-md";
+              row.dataset.ministry = member.ministry || "None";
+              row.dataset.membershipStatus =
+                member.membershipStatus || "Member";
+              row.dataset.attendanceStatus =
+                member.attendanceStatus || "Present";
+              row.dataset.createdAt = member.createdAt || "";
+
+              const columns = [
+                member.name || "N/A",
+                member.gender || "N/A",
+                member.dob || "N/A",
+                member.phone || "N/A",
+                member.email || "N/A",
+                member.address || "N/A",
+                member.createdAt ? formatDate(member.createdAt) : "N/A",
+              ];
+
+              columns.forEach((value) => {
+                const cell = document.createElement("td");
+                cell.className = "py-3 px-3";
+                cell.textContent = value;
+                row.appendChild(cell);
+              });
+
+              const actionCell = document.createElement("td");
+              actionCell.className = "py-3 px-3";
+              actionCell.innerHTML = `
+                <button class="text-blue-600 hover:text-blue-800">Edit</button>
+                <button class="text-red-600 hover:text-red-800 ml-2">Delete</button>
+              `;
+              row.appendChild(actionCell);
+              tbody.appendChild(row);
+            });
+
+            renderTable();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert(
+              error.message || "Something went wrong while saving the member.",
+            );
+          })
+          .finally(() => {
+            closeModal();
+          });
+      }
+
+      function formatDate(dateString) {
+        if (!dateString) return "N/A";
+        const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) return "N/A";
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;
+        return `${day}/${month}/${year} ${String(hours).padStart(2, "0")}:${minutes}${ampm}`;
+      }
+
+      function normalizeDateValue(value) {
+        const match = String(value || "").match(/(\d{2})\/(\d{2})\/(\d{4})/);
+        if (!match) return "";
+        return `${match[3]}-${match[2]}-${match[1]}`;
+      }
+    </script>
+
+    <script>
       let members = [];
       let idCounter = 1;
       let currentPage = 1;
-      const pageSize = 8;
+      const pageSize = 20;
       let sortKey = null;
       let sortDir = 1;
       let lastTotalPages = 1;
@@ -1534,30 +1528,90 @@
       function renderTable() {
         const tbody = document.getElementById("recordsBody");
         const emptyState = document.getElementById("emptyState");
-        const table = document.getElementById("recordsTable");
+        const table = document.getElementById("attendance");
         const paginationBar = document.getElementById("paginationBar");
+        const allRows = Array.from(tbody.querySelectorAll("tr"));
 
-        if (members.length === 0) {
-          table.classList.add("hidden");
-          emptyState.classList.remove("hidden");
-          paginationBar.style.display = "none";
+        if (!allRows.length) {
+          if (table) table.classList.add("hidden");
+          if (emptyState) emptyState.classList.remove("hidden");
+          if (paginationBar) paginationBar.classList.add("hidden");
           return;
         }
-        table.classList.remove("hidden");
-        emptyState.classList.add("hidden");
-        paginationBar.style.display = "";
 
-        const filtered = filteredSortedList();
-        const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+        if (table) table.classList.remove("hidden");
+        if (emptyState) emptyState.classList.add("hidden");
+        if (paginationBar) paginationBar.classList.remove("hidden");
+
+        const q = val("tableSearch").toLowerCase().trim();
+        const fm = val("filterMinistry");
+        const fs = val("filterMembership");
+        const fa = val("filterAttendance");
+        const fd = val("filterDateInput");
+
+        const filteredRows = allRows.filter((row) => {
+          const text = row.textContent.toLowerCase();
+          if (q && !text.includes(q)) return false;
+          if (
+            fm &&
+            !(row.dataset.ministry || "")
+              .toLowerCase()
+              .includes(fm.toLowerCase())
+          )
+            return false;
+          if (
+            fs &&
+            !(row.dataset.membershipStatus || "")
+              .toLowerCase()
+              .includes(fs.toLowerCase())
+          )
+            return false;
+          if (
+            fa &&
+            !(row.dataset.attendanceStatus || "")
+              .toLowerCase()
+              .includes(fa.toLowerCase())
+          )
+            return false;
+          if (fd) {
+            const rowDate = normalizeDateValue(
+              row.children[6]?.textContent || "",
+            );
+            if (rowDate !== fd) return false;
+          }
+          return true;
+        });
+
+        const totalCount = filteredRows.length;
+        const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
         if (currentPage > totalPages) currentPage = totalPages;
+
+        allRows.forEach((row) => {
+          row.style.display = "none";
+        });
+
+        const existingEmptyRow = tbody.querySelector(".no-results-row");
+        if (existingEmptyRow) existingEmptyRow.remove();
+
+        if (!filteredRows.length) {
+          allRows.forEach((row) => {
+            row.style.display = "none";
+          });
+          const emptyRow = document.createElement("tr");
+          emptyRow.className = "no-results-row";
+          emptyRow.innerHTML = `<td colspan="8" class="text-center text-slate-400 text-sm py-10">No matching records found. Try adjusting your search or filters.</td>`;
+          tbody.appendChild(emptyRow);
+          renderPagination(0, 1);
+          return;
+        }
+
         const start = (currentPage - 1) * pageSize;
-        const pageItems = filtered.slice(start, start + pageSize);
+        const end = start + pageSize;
+        filteredRows.slice(start, end).forEach((row) => {
+          row.style.display = "";
+        });
 
-        tbody.innerHTML = pageItems.length
-          ? pageItems.map(rowHtml).join("")
-          : `<tr><td colspan="14" class="text-center text-slate-400 text-sm py-10">No matching records found. Try adjusting your search or filters.</td></tr>`;
-
-        renderPagination(filtered.length, totalPages);
+        renderPagination(totalCount, totalPages);
         updateSortIndicators();
       }
 
@@ -1760,45 +1814,6 @@
     ========================================================= */
       renderTable();
       updateStats();
-    </script>
-
-    <script>
-      function add_member() {
-        console.log("adding member!");
-        const name = document.getElementById("fullName");
-        const dob = document.getElementById("dob");
-        const phone = document.getElementById("phone");
-        const email = document.getElementById("email");
-        const address = document.getElementById("address");
-
-        data = {
-          name: name.value,
-          dob: dob.value,
-          phone: phone.value,
-          email: email.value,
-          address: address.value,
-        };
-        console.log(data);
-        fetch("/add_member", {
-          method: "POST",
-          headers: {
-            "Content-Type": "Application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((res) => {
-            return res.json();
-          })
-          .then((el) => {
-            console.log(el);
-          })
-          .catch((e) => {
-            console.log(e);
-          })
-          .finally(() => {
-            closeModal();
-          });
-      }
     </script>
   </body>
 </html>
