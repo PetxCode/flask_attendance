@@ -5,7 +5,8 @@ import os
 
 app = Flask(__name__)
 
-url = "mongodb://localhost:27017"
+# url = "mongodb://localhost:27017"
+url = "mongodb+srv://nextteachnow:nextteachnow@cluster0.ozfyjn7.mongodb.net/churchDB?appName=Cluster0"
 client = MongoClient(url)
 db = client["churchDB"]
 collection = db["attendence"]
