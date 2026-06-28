@@ -1064,6 +1064,12 @@
             const tbody = document.getElementById("recordsBody");
             const members = payload.data || [];
 
+            // If table doesn't exist yet (empty state), reload to render it
+            if (!tbody) {
+              window.location.reload();
+              return;
+            }
+
             // Clear existing rows before re-rendering to prevent duplicates
             tbody.innerHTML = "";
 
@@ -1107,7 +1113,7 @@
             renderTable();
           })
           .catch((error) => {
-            console.error("Error:", error);
+            // console.error("Error:", error);
             alert(
               error.message || "Something went wrong while saving the member.",
             );
