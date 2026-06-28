@@ -1064,6 +1064,9 @@
             const tbody = document.getElementById("recordsBody");
             const members = payload.data || [];
 
+            // Clear existing rows before re-rendering to prevent duplicates
+            tbody.innerHTML = "";
+
             members.forEach((member) => {
               const row = document.createElement("tr");
               row.className = "odd:bg-slate-50 rounded-md";
